@@ -1,7 +1,4 @@
-# for support join here [TorrentLeech-Gdrive](https://telegram.dog/GBotStore)
-# working example group [Leech Here](https://telegram.dog/GBotStore)
-
-# Telegram Torrent Leecher 🔥🤖
+# Telegram Torrent Leecher 🔥
 
 A Telegram Torrent (and youtube-dl) Leecher based on [Pyrogram](https://github.com/pyrogram/pyrogram)
 
@@ -24,29 +21,15 @@ A Telegram Torrent (and youtube-dl) Leecher based on [Pyrogram](https://github.c
 # TO-DO
 -   [x] Gdrive file clonning using Gclone
 
-### Credit goes to SpEcHiDe for his Publicleech repo.
+### Credit goes to SpEcHiDe & Gautamajay52.
 
 ## installing...
 
 ### The Easy Way
 
-#### STEPS (I did this to avoid the use of same button multiple times)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-a)You have to fork this repo at first(Don't know how to🤔, Then google it😐)
-
-b)Find `app.jso`. 🧐
-
-c)Tap on that. 😬
-
-d)Tap to edit and just add `n` at last of name (Don't touch code🤦). ✍️
-
-e)It should look like `app.json`. 🎉
-
-f)Then tap 👇👇
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) #Revived
-
-Better buy a vps 😐 and follow [this](https://github.com/gautamajay52/TorrentLeech-Gdrive#process-to-run-this-bot-on-vps)
+Better buy a vps 😐 and follow [this](https://github.com/NBSanthosh/T2Gv2.0#process-to-run-this-bot-on-vps)
 
 ### The Legacy Way
 Simply clone the repository and run the main file:
@@ -234,7 +217,7 @@ the file will be uploaded as `new.txt`.
 
 - Clone this repo:
 ```
-git clone https://github.com/gautamajay52/TorrentLeech-Gdrive torrentleech-gdrive
+git clone https:/NBSanthosh/T2Gv2.0 torrentleech-gdrive
 cd torrentleech-gdrive
 ```
 
@@ -282,4 +265,3 @@ sudo docker run torrentleech-gdrive
 * [Robots](https://telegram.dog/Robots) for their [@UploadBot](https://telegram.dog/UploadBot)
 * [@AjeeshNair](https://telegram.dog/AjeeshNait) for his [torrent.ajee.sh](https://torrent.ajee.sh)
 * [@gotstc](https://telegram.dog/gotstc), @aryanvikash, [@HasibulKabir](https://telegram.dog/HasibulKabir) for their TORRENT groups
-* [![CopyLeft](https://telegra.ph/file/b514ed14d994557a724cb.jpg)](https://telegra.ph/file/fab1017e21c42a5c1e613.mp4 "CopyLeft Credit Video")
