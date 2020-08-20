@@ -438,18 +438,19 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 except:
                     pass
                 #
-                msg = f"\n📥Downloading File: `{downloading_dir_name}`"
-                msg += f"\n🚀Speed: {file.download_speed_string()} 🔽 / {file.upload_speed_string()} 🔼"
-                msg += f"\n⏳Progress: {file.progress_string()}"
-                msg += f"\n💾Total Size: {file.total_length_string()}"
+                msg = f"\n<b>📥Downloading File:</b> <code>{downloading_dir_name}</code>"
+                msg += f"\n<b>🚀Speed:</b> {file.download_speed_string()}"
+                #🔽 / {file.upload_speed_string()} 🔼"
+                msg += f"\n<b>⏳Progress:</b> {file.progress_string()}"
+                msg += f"\n<b>💾Total Size:</b> {file.total_length_string()}"
 
                 if is_file is None :
                    msg += f"\n🔗<b>Connections:</b> {file.connections}"
                 else :
                    msg += f"\n<b>Info:</b>[ P : {file.connections} || S : {file.num_seeders} ]"
 
-                # msg += f"\nStatus: {file.status}"
-                msg += f"\n⏰ETA: {file.eta_string()}"
+                # msg += f"\n<b>Status:</b> {file.status}"
+                msg += f"\n<b>⏰ETA:</b> {file.eta_string()}"
                 msg += f"\nGID: <code>{gid}</code>"
                 inline_keyboard = []
                 ikeyboard = []
@@ -470,7 +471,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
             await check_progress_for_dl(aria2, gid, event, previous_message)
         else:
             await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-            await event.edit(f"File Downloaded Successfully: `{file.name}`")
+            await event.edit(f"File Downloaded Successfully: <code>{file.name}</code>")
             return True
     except Exception as e:
         LOGGER.info(str(e))
