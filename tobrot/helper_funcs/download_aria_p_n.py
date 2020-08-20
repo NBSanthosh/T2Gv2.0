@@ -85,14 +85,14 @@ def add_magnet(aria_instance, magnetic_link, c_file_name):
             options=options
         )
     except Exception as e:
-        return False, "**FAILED** \n" + str(e) + " \nPlease do not send SLOW links. Read /help"
+        return False, "**FAILED😐** \n" + str(e) + " \nPlease do not send SLOW links😥. Read /help"
     else:
         return True, "" + download.gid + ""
 
 
 def add_torrent(aria_instance, torrent_file_path):
     if torrent_file_path is None:
-        return False, "**FAILED** \n" + str(e) + " \nsomething wrongings when trying to add <u>TORRENT</u> file"
+        return False, "**FAILED😐** \n" + str(e) + " \nSomething wrong when trying to add <u>TORRENT</u> file"
     if os.path.exists(torrent_file_path):
         # Add Torrent Into Queue
         try:
@@ -103,11 +103,11 @@ def add_torrent(aria_instance, torrent_file_path):
                 position=None
             )
         except Exception as e:
-            return False, "**FAILED** \n" + str(e) + " \nPlease do not send SLOW links. Read /help"
+            return False, "**FAILED😐** \n" + str(e) + " \nPlease do not send SLOW links😥. Read /help"
         else:
             return True, "" + download.gid + ""
     else:
-        return False, "**FAILED** \n" + str(e) + " \nPlease try other sources to get workable link"
+        return False, "**FAILED😐** \n" + str(e) + " \nPlease try other sources to get workable link"
 
 
 def add_url(aria_instance, text_url, c_file_name):
@@ -124,7 +124,7 @@ def add_url(aria_instance, text_url, c_file_name):
             options=options
         )
     except Exception as e:
-        return False, "**FAILED** \n" + str(e) + " \nPlease do not send SLOW links. Read /help"
+        return False, "**FAILED😐** \n" + str(e) + " \nPlease do not send SLOW links😥. Read /help"
     else:
         return True, "" + download.gid + ""
 
@@ -170,7 +170,7 @@ async def call_apropriate_function(
                 None
             )
         else:
-            return False, "can't get metadata \n\n#stopped"
+            return False, "🛑can't get metadata \n\n#stopped"
     await asyncio.sleep(1)
     file = aria_instance.get_download(err_message)
     to_upload_file = file.name
