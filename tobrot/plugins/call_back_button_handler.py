@@ -32,7 +32,7 @@ async def button(bot, update: CallbackQuery):
         print(cb_data)
         if cb_data.startswith("cancel"):
             if len(cb_data) > 1:
-                i_m_s_e_g = await update.message.reply_text("checking..?", quote=True)
+                i_m_s_e_g = await update.message.reply_text("Cancelling now..", quote=True)
                 aria_i_p = await aria_start()
                 g_id = cb_data.split()[-1]
                 LOGGER.info(g_id)
