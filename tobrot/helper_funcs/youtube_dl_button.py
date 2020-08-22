@@ -92,9 +92,9 @@ async def youtube_dl_call_back(bot, update):
     LOGGER.info(custom_file_name)
     #
     await update.message.edit_caption(
-        caption="trying to download"
+        caption="Inprocess to download 📥"
     )
-    description = "@PublicLeech"
+    description = "@TORRENTLEECHER"
     if "fulltitle" in response_json:
         description = response_json["fulltitle"][0:1021]
         # escape Markdown and special characters
