@@ -43,7 +43,6 @@ async def save_thumb_nail(client, message):
         os.remove(downloaded_file_name)
         await ismgs.edit(
             "Custom thumbnail is saved!✔️"
-
         )
     else:
         await message.edit("Reply to a photo to save custom thumbnail")
