@@ -1,7 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# Copyright (C) 2020 by surlogu@Github, < https://github.com/surlogu>.
+#
+# This file is part of < https://github.com/surlogu/AsEnLEECH > project,
+# and is released under the "GNU v3.0 License Agreement".
+# Please see < https://github.com/surlogu/AsEnLEECH/blob/master/LICENSE >
+#
+# All rights reserved.
 
-# the logging things
 import logging
 logging.basicConfig(
     level=logging.DEBUG,
@@ -33,24 +37,35 @@ async def new_join_f(client, message):
 
 async def help_message_f(client, message):
     # await message.reply_text("no one gonna help you 🤣🤣🤣🤣", quote=True)
-    #channel_id = str(AUTH_CHANNEL)[4:]
-    #message_id = 99
-    # display the /help
-    
-    await message.reply_text("""SEED DRIVE""", disable_web_page_preview=True)
+    channel_id = str(AUTH_CHANNEL)[4:]
+    message_id = 99
+    # display the /help message
+    inline_keyboard = []
+    inline_keyboard.append([
+        pyrogram.InlineKeyboardButton(
+            text="Read This?",
+            url="https://t.me/c/1237106983/4200"
+        )
+    ])
+    reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
+    await message.reply_text(
+        f"<b>AsEnLEECH!😻</b>",
+        quote=True,
+        reply_markup=reply_markup
+    )
 
 
 async def rename_message_f(client, message):
     inline_keyboard = []
     inline_keyboard.append([
         pyrogram.InlineKeyboardButton(
-            text="read this?",
-            url="https://t.me/keralagram/698909"
+            text="Contact Admin",
+            url="https://t.me/surlogu"
         )
     ])
     reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
     await message.reply_text(
-        "please use @renamebot",
+        "Please use @AsEnDLbot",
         quote=True,
         reply_markup=reply_markup
     )
