@@ -42,7 +42,7 @@ from tobrot import (
 from pyrogram import (
     InputMediaDocument,
     InputMediaVideo,
-    InputMediaAudio in
+    InputMediaAudio
 )
 
 #stackoverflow🤐
