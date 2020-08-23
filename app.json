@@ -58,12 +58,12 @@
     },
     "FINISHED_PROGRESS_STR": {
       "description": "should be a single character.",
-      "value": ""
+      "value": "▰",
       "required": false
     },
     "UN_FINISHED_PROGRESS_STR": {
       "description": "should be a single character.",
-      "value": ""
+      "value": "▱",
       "required": false
     },
     "TG_OFFENSIVE_API": {
@@ -72,42 +72,42 @@
     },
     "LEECH_COMMAND": {
       "description": "Enter your custom leech command like /leech@urgroupname and so on. Default is /leech",
-      "value": "leech@ttgdrivev2bot"
+      "value": "leech@ttgdrivev2bot",
       "required": false
     },
     "INDEX_LINK": {
       "description": "Enter your index link:",
-      "value": ""
+      "value": "",
       "required": false
     },
     "GLEECH_COMMAND": {
       "description": "Enter your custom gleech command like /gleech1@urgroupname and so on. Default is /gleech",
-      "value": "gleech@ttgdrivev2bot"
+      "value": "gleech@ttgdrivev2bot",
       "required": false
     },
     "TELEGRAM_LEECH_COMMAND_G": {
       "description": "Enter your custom tleech command like /tleech1@urgroupname and so on. Default is /tleech",
-      "value": "tleech@ttgdrivev2bot"
+      "value": "tleech@ttgdrivev2bot",
       "required": false
     },
     "YTDL_COMMAND": {
       "description": "Enter your custom ytdl command like ytdl1@urgroupname and so on. Default is /ytdl.",
-      "value": "ytdl@ttgdrivev2bot"
+      "value": "ytdl@ttgdrivev2bot",
       "required": false
     },
     "PYTDL_COMMAND_G": {
       "description": "Enter your custom pytdl command like pytdl1@urgroupname and so on. Default is /pytdl.",
-      "value": "pytdl@ttgdrivev2bot"
+      "value": "pytdl@ttgdrivev2bot",
       "required": false
     },
     "CANCEL_COMMAND_G": {
       "description": "Enter your custom cancel command like cancel@urgroupname and so on. Default is /cancel.",
-      "value": "cancel@ttgdrivev2bot"
+      "value": "cancel@ttgdrivev2bot",
       "required": false
     },
     "GET_SIZE_G": {
       "description": "Enter your custom getsize command like getsize@urgroupname and so on. Default is /getsize.",
-      "value": "gsize@ttgdrivev2bot"
+      "value": "gsize@ttgdrivev2bot",
       "required": false
     },
     "RCLONE_CONFIG": {
@@ -116,7 +116,7 @@
     },
     "DESTINATION_FOLDER": {
       "description": "Enter your Cloud folder NAME(not ID😅) in which you want to upload/store your files.",
-      "value": ""
+      "value": "",
       "required": false
     },
     "CUSTOM_FILE_NAME": {
