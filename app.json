@@ -58,10 +58,12 @@
     },
     "FINISHED_PROGRESS_STR": {
       "description": "should be a single character.",
+      "value": ""
       "required": false
     },
     "UN_FINISHED_PROGRESS_STR": {
       "description": "should be a single character.",
+      "value": ""
       "required": false
     },
     "TG_OFFENSIVE_API": {
@@ -70,34 +72,42 @@
     },
     "LEECH_COMMAND": {
       "description": "Enter your custom leech command like /leech@urgroupname and so on. Default is /leech",
+      "value": ""
       "required": false
     },
     "INDEX_LINK": {
       "description": "Enter your index link:",
+      "value": ""
       "required": false
     },
     "GLEECH_COMMAND": {
       "description": "Enter your custom gleech command like /gleech1@urgroupname and so on. Default is /gleech",
+      "value": ""
       "required": false
     },
     "TELEGRAM_LEECH_COMMAND_G": {
       "description": "Enter your custom tleech command like /tleech1@urgroupname and so on. Default is /tleech",
+      "value": ""
       "required": false
     },
     "YTDL_COMMAND": {
       "description": "Enter your custom ytdl command like ytdl1@urgroupname and so on. Default is /ytdl.",
+      "value": ""
       "required": false
     },
     "PYTDL_COMMAND_G": {
       "description": "Enter your custom pytdl command like pytdl1@urgroupname and so on. Default is /pytdl.",
+      "value": ""
       "required": false
     },
     "CANCEL_COMMAND_G": {
       "description": "Enter your custom cancel command like cancel@urgroupname and so on. Default is /cancel.",
+      "value": ""
       "required": false
     },
     "GET_SIZE_G": {
       "description": "Enter your custom getsize command like getsize@urgroupname and so on. Default is /getsize.",
+      "value": ""
       "required": false
     },
     "RCLONE_CONFIG": {
@@ -106,6 +116,7 @@
     },
     "DESTINATION_FOLDER": {
       "description": "Enter your Cloud folder NAME(not ID😅) in which you want to upload/store your files.",
+      "value": ""
       "required": false
     },
     "CUSTOM_FILE_NAME": {
