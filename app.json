@@ -57,12 +57,12 @@
     },
     "FINISHED_PROGRESS_STR": {
       "description": "should be a single character.",
-      "value": "",
+      "value": "▰",
       "required": false
     },
     "UN_FINISHED_PROGRESS_STR": {
       "description": "should be a single character.",
-      "value": "",
+      "value": "▱",
       "required": false
     },
     "TG_OFFENSIVE_API": {
@@ -76,7 +76,7 @@
     },
     "INDEX_LINK": {
       "description": "Enter your index link:",
-      "value": "",
+      "value": "https://seriescorner.nbscloud.workers.dev/T2G%20Uploads",
       "required": false
     },
     "GLEECH_COMMAND": {
@@ -115,7 +115,7 @@
     },
     "DESTINATION_FOLDER": {
       "description": "Enter your Cloud folder NAME(not ID😅) in which you want to upload/store your files.",
-      "value": "",
+      "value": "T2G Uploads",
       "required": false
     },
     "CUSTOM_FILE_NAME": {
