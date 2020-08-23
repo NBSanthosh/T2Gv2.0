@@ -3,7 +3,6 @@
   "description": "A Telegram Torrent (and youtube-dl) Leecher based on Pyrogram.",
   "keywords": [
     "telegram"
-    "leecher"
   ],
   "repository": "https://github.com/NBSanthosh/T2Gv2.0",
   "success_url": "https://github/NBSanthosh",
@@ -116,7 +115,7 @@
     },
     "DESTINATION_FOLDER": {
       "description": "Enter your Cloud folder NAME(not ID😅) in which you want to upload/store your files.",
-      "value": "T2GUploads",
+      "value": "",
       "required": false
     },
     "CUSTOM_FILE_NAME": {
