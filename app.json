@@ -77,7 +77,7 @@
     },
     "INDEX_LINK": {
       "description": "Enter your index link:",
-      "value": "1https://seriescorner.nbscloud.workers.dev/T2G%20Uploads",
+      "value": "",
       "required": false
     },
     "GLEECH_COMMAND": {
