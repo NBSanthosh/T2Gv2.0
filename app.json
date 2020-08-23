@@ -77,7 +77,7 @@
     },
     "INDEX_LINK": {
       "description": "Enter your index link:",
-      "value": "",
+      "value": "1https://seriescorner.nbscloud.workers.dev/T2G%20Uploads",
       "required": false
     },
     "GLEECH_COMMAND": {
@@ -116,7 +116,7 @@
     },
     "DESTINATION_FOLDER": {
       "description": "Enter your Cloud folder NAME(not ID😅) in which you want to upload/store your files.",
-      "value": "",
+      "value": "T2G Uploads",
       "required": false
     },
     "CUSTOM_FILE_NAME": {
