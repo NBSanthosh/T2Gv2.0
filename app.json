@@ -116,7 +116,7 @@
     },
     "DESTINATION_FOLDER": {
       "description": "Enter your Cloud folder NAME(not ID😅) in which you want to upload/store your files.",
-      "value": "T2G Uploads",
+      "value": "T2GUploads",
       "required": false
     },
     "CUSTOM_FILE_NAME": {
