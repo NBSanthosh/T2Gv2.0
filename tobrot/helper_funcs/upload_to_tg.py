@@ -303,6 +303,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                 start_time
             )
         )
+        await message_for_progress_display.delete()
         if message.message_id != message_for_progress_display.message_id:
             await message_for_progress_display.delete()
         os.remove(local_file_name)
