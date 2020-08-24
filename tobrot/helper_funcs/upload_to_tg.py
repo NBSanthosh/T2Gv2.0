@@ -245,7 +245,6 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
     LOGGER.info(thumbnail_location)
     #
     if UPLOAD_AS_DOC.upper() == 'TRUE':
-        thumb = None
         message_for_progress_display = message
         if not edit_media:
             message_for_progress_display = await message.reply_text("starting upload of {}".format(os.path.basename(local_file_name)))
