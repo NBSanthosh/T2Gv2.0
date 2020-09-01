@@ -33,7 +33,8 @@ from tobrot import (
     SAVE_THUMBNAIL,
     CLEAR_THUMBNAIL,
     PYTDL_COMMAND_G,
-    LOG_COMMAND
+    LOG_COMMAND,
+    CLONE_COMMAND_G
 )
 
 from pyrogram import Client, Filters, MessageHandler, CallbackQueryHandler
@@ -116,6 +117,12 @@ if __name__ == "__main__" :
         filters=Filters.command([f"{PYTDL_COMMAND_G}"]) & Filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(incoming_youtube_playlist_dl_handler)
+    #
+    incoming_clone_handler = MessageHandler(
+        g_clonee,
+        filters=filters.command([f"{CLONE_COMMAND_G}"]) & filters.chat(chats=AUTH_CHANNEL)
+    )
+    app.add_handler(incoming_clone_handler)
     #
     status_message_handler = MessageHandler(
         status_message_f,
