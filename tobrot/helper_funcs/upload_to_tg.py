@@ -245,35 +245,116 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
     LOGGER.info(thumbnail_location)
     #
     if UPLOAD_AS_DOC.upper() == 'TRUE':
-        thumb = None
-        thumb_image_path = None
-        if os.path.exists(thumbnail_location):
-        	thumb_image_path = await copy_file(thumbnail_location, os.path.dirname(os.path.abspath(local_file_name)))
-        	thumb = thumb_image_path
-        message_for_progress_display = message
-        if not edit_media:
-            message_for_progress_display = await message.reply_text("starting upload of {}".format(os.path.basename(local_file_name)))
-        sent_message = await message.reply_document(
-            document=local_file_name,
-    	    # quote=True,
-            thumb=thumb,
-            caption=caption_str,
-            parse_mode="html",
-            disable_notification=True,
-    	    #reply_to_message_id=message.reply_to_message.message_id,
-            progress=progress_for_pyrogram,
-            progress_args=(
-                "Inprocess to upload📤",
-                message_for_progress_display,
-                start_time
-            )
-        )
-        await message_for_progress_display.delete()
-        if message.message_id != message_for_progress_display.message_id:
-            await message_for_progress_display.delete()
+        try:
+            message_for_progress_display = message
+            if not edit_media:
+                message_for_progress_display = await message.reply_text(
+                    "starting upload of {}".format(os.path.basename(local_file_name))
+                )
+            if local_file_name.upper().endswith(("MP3", "M4A", "M4B", "FLAC", "WAV")):
+                metadata = extractMetadata(createParser(local_file_name))
+                duration = 0
+                title = ""
+                artist = ""
+                if metadata.has("duration"):
+                	duration = metadata.get('duration').seconds
+                if metadata.has("title"):
+                    title = metadata.get("title")
+                if metadata.has("artist"):
+                    artist = metadata.get("artist")
+                thumb_image_path = None
+                if os.path.isfile(thumbnail_location):
+                    thumb_image_path = await copy_file(
+                        thumbnail_location,
+                        os.path.dirname(os.path.abspath(local_file_name))
+                    )
+                thumb = None
+                if thumb_image_path is not None and os.path.isfile(thumb_image_path):
+                    thumb = thumb_image_path
+                 # send audio
+                if edit_media and message.photo:
+                    await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
+                    sent_message = await message.edit_media(
+                        media=InputMediaAudio(
+                            media=local_file_name,
+                            thumb=thumb,
+                            caption=caption_str,
+                            parse_mode="html",
+                            duration=duration,
+                            performer=artist,
+                            title=title
+                        )
+                        # quote=True,
+                    )
+                else:
+                    sent_message = await message.reply_audio(
+                        audio=local_file_name,
+                        # quote=True,
+                        caption=caption_str,
+                        parse_mode="html",
+                        duration=duration,
+                        performer=artist,
+                        title=title,
+                        thumb=thumb,
+                        disable_notification=True,
+                        #reply_to_message_id=message.reply_to_message.message_id,
+                        progress=progress_for_pyrogram,
+                        progress_args=(
+                            "Inprocess to upload📤",
+                            message_for_progress_display,
+                            start_time
+                        )
+                    )
+                if thumb is not None:
+                    os.remove(thumb)
+            else:
+                thumb_image_path = None
+                if os.path.isfile(thumbnail_location):
+                    thumb_image_path = await copy_file(
+                        thumbnail_location,
+                        os.path.dirname(os.path.abspath(local_file_name))
+                    )
+                # if a file, don't upload "thumb"
+                # this "diff" is a major derp -_- 😔😭😭
+                thumb = None
+                if thumb_image_path is not None and os.path.isfile(thumb_image_path):
+                    thumb = thumb_image_path
+                #
+                # send document
+                if edit_media and message.photo:
+                	sent_message = await message.edit_media(
+                        media=InputMediaDocument(
+                            media=local_file_name,
+                            thumb=thumb,
+                            caption=caption_str,
+                            parse_mode="html"
+                        )
+                        # quote=True,
+                    )
+                else:
+                    sent_message = await message.reply_document(
+                        document=local_file_name,
+                        # quote=True,
+                        thumb=thumb,
+                        caption=caption_str,
+                        parse_mode="html",
+                        disable_notification=True,
+                        #reply_to_message_id=message.reply_to_message.message_id,
+                        progress=progress_for_pyrogram,
+                        progress_args=(
+                            "Inprocess to upload📤",
+                            message_for_progress_display,
+                            start_time
+                        )
+                    )
+                if thumb is not None:
+                    os.remove(thumb)
+        except Exception as e:
+            await message_for_progress_display.edit_text("**FAILED**\n" + str(e))
+        else:
+            if message.message_id != message_for_progress_display.message_id:
+                await message_for_progress_display.delete()
         os.remove(local_file_name)
-        if thumb is not None:
-        	os.remove(thumb)
     else:
         try:
             message_for_progress_display = message
