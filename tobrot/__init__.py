@@ -56,8 +56,8 @@ PYTDL_COMMAND_G = Config.PYTDL_COMMAND_G
 LOG_COMMAND = Config.LOG_COMMAND
 CLONE_COMMAND_G = Config.CLONE_COMMAND_G
 
-if os.path.exists("status.txt"):
-	with open("status.txt", "r+") as f_d:
+if os.path.exists("log.txt"):
+	with open("log.txt", "r+") as f_d:
 		f_d.truncate(0)
 
 # the logging things
@@ -67,7 +67,7 @@ logging.basicConfig(
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
         RotatingFileHandler(
-            "status.txt",
+            "log.txt",
             maxBytes=FREE_USER_MAX_FILE_SIZE,
             backupCount=10
         ),
