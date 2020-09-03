@@ -15,10 +15,10 @@ RUN apt -qq install -y git aria2 wget curl busybox unzip unrar tar python3 ffmpe
 RUN wget https://rclone.org/install.sh
 RUN bash install.sh
 
-RUN mkdir /app/gautam
-RUN wget -O /app/gautam/gclone.gz https://git.io/JJMSG
-RUN gzip -d /app/gautam/gclone.gz
-RUN chmod 0775 /app/gautam/gclone
+RUN mkdir /app/leecher
+RUN wget -O /app/leecher/gclone.gz https://git.io/JJMSG
+RUN gzip -d /app/leecher/gclone.gz
+RUN chmod 0775 /app/leecher/gclone
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
