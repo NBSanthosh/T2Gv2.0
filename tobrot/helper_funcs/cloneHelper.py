@@ -180,7 +180,7 @@ class CloneHelper:
         self.lsg = await self.mess.reply_text(f"Cloning...you should wait 🤒")
         destination = f'{DESTINATION_FOLDER}'
         cmd = [
-            "/app/gautam/gclone",
+            "/app/leecher/gclone",
             "copy",
             "--config=rclone.conf",
             "DRIVE:{"f"{self.g_id}""}",
