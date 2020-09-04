@@ -62,9 +62,9 @@ async def upload_to_tg(
     LOGGER.info(local_file_name)
     base_file_name = os.path.basename(local_file_name)
     caption_str = ""
-    caption_str += "<code>"
+    #caption_str += "<code>"
     caption_str += base_file_name
-    caption_str += "</code>"
+    #caption_str += "</code>"
     # caption_str += "\n\n"
     # caption_str += "<a href='tg://user?id="
     # caption_str += str(from_user)
@@ -137,7 +137,7 @@ async def upload_to_tg(
 
 async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-    del_it = await message.edit_text(f"<a href='tg://user?id={g_id}'>🔊</a> Now Uploading to ☁️ Cloud!!!")
+    del_it = await message.edit_text(f"<a href='tg://user?id={g_id}'📤</a> Uploading to Cloud Now 📤")
     #subprocess.Popen(('touch', 'rclone.conf'), stdout = subprocess.PIPE)
     with open('rclone.conf', 'a', newline="\n", encoding = 'utf-8') as fole:
         fole.write("[DRIVE]\n")
@@ -171,15 +171,15 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         gjay = size(os.path.getsize(file_upload))
         LOGGER.info(gjay)
         button = []
-        button.append([pyrogram.InlineKeyboardButton(text="☁️ CloudUrl ☁️", url=f"{gau_link}")])
+        button.append([pyrogram.InlineKeyboardButton(text="☁️ Cloud Url ☁️", url=f"{gau_link}")])
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{file_upload}"
             tam_link = requests.utils.requote_uri(indexurl)
             LOGGER.info(tam_link)
-            button.append([pyrogram.InlineKeyboardButton(text="ℹ️ IndexUrl ℹ️", url=f"{tam_link}")])
+            button.append([pyrogram.InlineKeyboardButton(text="ℹ️ Index Url ℹ️", url=f"{tam_link}")])
         button_markup = pyrogram.InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-        await messa_ge.reply_text(f"🤖: {file_upload} has been Uploaded successfully to your Cloud <a href='tg://user?id={g_id}'>🤒</a>\n📀 Size: {gjay}", reply_markup=button_markup)
+        await messa_ge.reply_text(f"📄: {file_upload} has been Uploaded successfully to your Cloud <a href='tg://user?id={g_id}'>✅</a>\n💾 Size: {gjay}", reply_markup=button_markup)
         #await message.edit_text(f"""🤖: {file_upload} has been Uploaded successfully to your cloud 🤒\n\n☁️ Cloud URL:  <a href="{gau_link}">FileLink</a>\nℹ️ Direct URL:  <a href="{tam_link}">IndexLink</a>""")
         os.remove(file_upload)
         await del_it.delete()
@@ -214,15 +214,15 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         gjay = size(getFolderSize(file_upload))
         LOGGER.info(gjay)
         button = []
-        button.append([pyrogram.InlineKeyboardButton(text="☁️ CloudUrl ☁️", url=f"{gau_link}")])
+        button.append([pyrogram.InlineKeyboardButton(text="☁️ Cloud Url ☁️", url=f"{gau_link}")])
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{file_upload}/"
             tam_link = requests.utils.requote_uri(indexurl)
             LOGGER.info(tam_link)
-            button.append([pyrogram.InlineKeyboardButton(text="ℹ️ IndexUrl ℹ️", url=f"{tam_link}")])
+            button.append([pyrogram.InlineKeyboardButton(text="ℹ️ Index Url ℹ️", url=f"{tam_link}")])
         button_markup = pyrogram.InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-        await messa_ge.reply_text(f"🤖: Folder has been Uploaded successfully to {tt} in your Cloud <a href='tg://user?id={g_id}'>🤒</a>\n📀 Size: {gjay}", reply_markup=button_markup)
+        await messa_ge.reply_text(f"📁: Folder has been Uploaded successfully to {tt} in your Cloud <a href='tg://user?id={g_id}'>✅</a>\n💾 Size: {gjay}", reply_markup=button_markup)
         #await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
         #await messa_ge.reply_text(f"""🤖: Folder has been Uploaded successfully to {tt} in your cloud 🤒\n\n☁️ Cloud URL:  <a href="{gau_link}">FolderLink</a>\nℹ️ Index Url:. <a href="{tam_link}">IndexLink</a>""")
         shutil.rmtree(file_upload)
@@ -245,34 +245,116 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
     LOGGER.info(thumbnail_location)
     #
     if UPLOAD_AS_DOC.upper() == 'TRUE':
-        thumb = None
-        thumb_image_path = None
-        if os.path.exists(thumbnail_location):
-        	thumb_image_path = await copy_file(thumbnail_location, os.path.dirname(os.path.abspath(local_file_name)))
-        	thumb = thumb_image_path
-        message_for_progress_display = message
-        if not edit_media:
-            message_for_progress_display = await message.reply_text("starting upload of {}".format(os.path.basename(local_file_name)))
-        sent_message = await message.reply_document(
-            document=local_file_name,
-    	    # quote=True,
-            thumb=thumb,
-            caption=caption_str,
-            parse_mode="html",
-            disable_notification=True,
-    	    #reply_to_message_id=message.reply_to_message.message_id,
-            progress=progress_for_pyrogram,
-            progress_args=(
-                "trying to upload",
-                message_for_progress_display,
-                start_time
-            )
-        )
-        if message.message_id != message_for_progress_display.message_id:
-            await message_for_progress_display.delete()
+        try:
+            message_for_progress_display = message
+            if not edit_media:
+                message_for_progress_display = await message.reply_text(
+                    "starting upload of {}".format(os.path.basename(local_file_name))
+                )
+            if local_file_name.upper().endswith(("MP3", "M4A", "M4B", "FLAC", "WAV")):
+                metadata = extractMetadata(createParser(local_file_name))
+                duration = 0
+                title = ""
+                artist = ""
+                if metadata.has("duration"):
+                	duration = metadata.get('duration').seconds
+                if metadata.has("title"):
+                    title = metadata.get("title")
+                if metadata.has("artist"):
+                    artist = metadata.get("artist")
+                thumb_image_path = None
+                if os.path.isfile(thumbnail_location):
+                    thumb_image_path = await copy_file(
+                        thumbnail_location,
+                        os.path.dirname(os.path.abspath(local_file_name))
+                    )
+                thumb = None
+                if thumb_image_path is not None and os.path.isfile(thumb_image_path):
+                    thumb = thumb_image_path
+                 # send audio
+                if edit_media and message.photo:
+                    await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
+                    sent_message = await message.edit_media(
+                        media=InputMediaAudio(
+                            media=local_file_name,
+                            thumb=thumb,
+                            caption=caption_str,
+                            parse_mode="html",
+                            duration=duration,
+                            performer=artist,
+                            title=title
+                        )
+                        # quote=True,
+                    )
+                else:
+                    sent_message = await message.reply_audio(
+                        audio=local_file_name,
+                        # quote=True,
+                        caption=caption_str,
+                        parse_mode="html",
+                        duration=duration,
+                        performer=artist,
+                        title=title,
+                        thumb=thumb,
+                        disable_notification=True,
+                        #reply_to_message_id=message.reply_to_message.message_id,
+                        progress=progress_for_pyrogram,
+                        progress_args=(
+                            "Inprocess to upload📤",
+                            message_for_progress_display,
+                            start_time
+                        )
+                    )
+                if thumb is not None:
+                    os.remove(thumb)
+            else:
+                thumb_image_path = None
+                if os.path.isfile(thumbnail_location):
+                    thumb_image_path = await copy_file(
+                        thumbnail_location,
+                        os.path.dirname(os.path.abspath(local_file_name))
+                    )
+                # if a file, don't upload "thumb"
+                # this "diff" is a major derp -_- 😔😭😭
+                thumb = None
+                if thumb_image_path is not None and os.path.isfile(thumb_image_path):
+                    thumb = thumb_image_path
+                #
+                # send document
+                if edit_media and message.photo:
+                	sent_message = await message.edit_media(
+                        media=InputMediaDocument(
+                            media=local_file_name,
+                            thumb=thumb,
+                            caption=caption_str,
+                            parse_mode="html"
+                        )
+                        # quote=True,
+                    )
+                else:
+                    sent_message = await message.reply_document(
+                        document=local_file_name,
+                        # quote=True,
+                        thumb=thumb,
+                        caption=caption_str,
+                        parse_mode="html",
+                        disable_notification=True,
+                        #reply_to_message_id=message.reply_to_message.message_id,
+                        progress=progress_for_pyrogram,
+                        progress_args=(
+                            "Inprocess to upload📤",
+                            message_for_progress_display,
+                            start_time
+                        )
+                    )
+                if thumb is not None:
+                    os.remove(thumb)
+        except Exception as e:
+            await message_for_progress_display.edit_text("**FAILED**\n" + str(e))
+        else:
+            if message.message_id != message_for_progress_display.message_id:
+                await message_for_progress_display.delete()
         os.remove(local_file_name)
-        if thumb is not None:
-        	os.remove(thumb)
     else:
         try:
             message_for_progress_display = message
@@ -351,7 +433,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                         #reply_to_message_id=message.reply_to_message.message_id,
                         progress=progress_for_pyrogram,
                         progress_args=(
-                            "trying to upload",
+                            "Inprocess to upload📤",
                             message_for_progress_display,
                             start_time
                         )
@@ -407,7 +489,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                         #reply_to_message_id=message.reply_to_message.message_id,
                         progress=progress_for_pyrogram,
                         progress_args=(
-                            "trying to upload",
+                            "Inprocess to upload📤",
                             message_for_progress_display,
                             start_time
                         )
@@ -449,7 +531,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                         #reply_to_message_id=message.reply_to_message.message_id,
                         progress=progress_for_pyrogram,
                         progress_args=(
-                            "trying to upload",
+                            "Inprocess to upload📤",
                             message_for_progress_display,
                             start_time
                         )
