@@ -45,7 +45,9 @@ async def incoming_purge_message_f(client, message):
 
 async def incoming_message_f(client, message):
     """/leech command"""
-    i_m_sefg = await message.reply_text("⏳Processing...", quote=True)
+    g_id = message.from_user.id
+    credit = await message.reply_text(f"🧲 Leeching for you <a href='tg://user?id={g_id}'>🤕</a>", parse_mode="html")
+    i_m_sefg = await credit.reply_text("⏳processing...", quote=True)
     is_zip = False
     is_unzip = False
     is_unrar = False
@@ -103,8 +105,9 @@ async def incoming_message_f(client, message):
 #
 async def incoming_gdrive_message_f(client, message):
     """/gleech command"""
-    i_m_sefg = await message.reply_text("⏳Processing...", quote=True)
-    is_zip = False
+    g_id = message.from_user.id
+    credit = await message.reply_text(f"🧲 Leeching for you <a href='tg://user?id={g_id}'>🤕</a>", parse_mode="html")
+    i_m_sefg = await credit.reply_text("⏳Processing...", quote=True)    is_zip = False
     is_unzip = False
     is_unrar = False
     is_untar = False
@@ -159,8 +162,9 @@ async def incoming_gdrive_message_f(client, message):
 
 async def incoming_youtube_dl_f(client, message):
     """ /ytdl command """
-    i_m_sefg = await message.reply_text("⏳Processing...", quote=True)
-    # LOGGER.info(message)
+    g_id = message.from_user.id
+    credit = await message.reply_text(f"💀 Downloading for you <a href='tg://user?id={g_id}'>🤕</a>", parse_mode="html")
+    i_m_sefg = await credit.reply_text("⏳Processing...", quote=True)    # LOGGER.info(message)
     # extract link from message
     dl_url, cf_name, yt_dl_user_name, yt_dl_pass_word = await extract_link(
         message.reply_to_message, "YTDL"
@@ -220,7 +224,7 @@ async def g_yt_playlist(client, message):
         if message.command[1] == "gdrive":
             G_DRIVE = True
     if 'youtube.com/playlist' in message.reply_to_message.text:
-        i_m_sefg = await message.reply_text("Downloading..Please wait", quote=True)
+        i_m_sefg = await message.reply_text("Downloading...you should wait🤗", quote=True)
         await yt_playlist_downg(message.reply_to_message, i_m_sefg, G_DRIVE)
     
     else:
